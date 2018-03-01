@@ -796,6 +796,14 @@ config MSM_QBT1000
 	  trusted apps, unloading them and marshalling buffers to the
 	  trusted fingerprint app.
 
+config DEEN_DTB
+        depends on ARCH_MSM
+        default n
+        bool "Deen DTBs"
+        help
+          Only include Deen specific DTBs to limit the number that
+          get built during kernel compilation.
+
 if (MSM_PM || MSM_PM_LEGACY)
 menuconfig MSM_IDLE_STATS
 	bool "Collect idle statistics"

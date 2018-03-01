@@ -38,6 +38,10 @@ dtb-$(CONFIG_ARCH_MDM9607) += mdm9607-mtp.dtb \
 
 targets += dtbs
 
+ifeq ($(CONFIG_DEEN_DTB),y)
+dtb-$(CONFIG_ARCH_SDM450) += sdm450-deen-evt1.dtb
+endif
+
 include $(srctree)/arch/arm64/boot/dts/qcom/Makefile
 $(obj)/%.dtb: $(src)/../../../../arm64/boot/dts/qcom/%.dts FORCE
 	$(call if_changed_dep,dtc)
