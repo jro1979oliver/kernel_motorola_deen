@@ -40,6 +40,12 @@ targets += dtbs
 
 ifeq ($(CONFIG_DEEN_DTB),y)
 dtb-$(CONFIG_ARCH_SDM450) += sdm450-deen-evt1.dtb
+dtb-$(CONFIG_ARCH_SDM450) += sdm450-deen-evt2.dtb
+dtb-$(CONFIG_ARCH_SDM450) += sdm450-deen-dvt1a.dtb
+dtb-$(CONFIG_ARCH_SDM450) += sdm450-deen-dvt1b.dtb
+dtb-$(CONFIG_ARCH_SDM450) += sdm450-deen-dvt2.dtb
+dtb-$(CONFIG_ARCH_SDM450) += sdm450-deen-pvt1.dtb
+dtb-$(CONFIG_ARCH_SDM450) += sdm450-deen-pvt2.dtb
 endif
 
 include $(srctree)/arch/arm64/boot/dts/qcom/Makefile
