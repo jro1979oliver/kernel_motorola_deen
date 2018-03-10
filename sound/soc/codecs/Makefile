@@ -225,6 +225,7 @@ snd-soc-tfa98xx-objs := tfa98xx.o
 snd-soc-tfa98xx-objs += tfa_container.o
 snd-soc-tfa98xx-objs += tfa_dsp.o
 snd-soc-tfa98xx-objs += tfa_init.o
+obj-$(CONFIG_SND_SOC_TFA9874)	+= tfa9874/
 
 obj-$(CONFIG_SND_SOC_88PM860X)	+= snd-soc-88pm860x.o
 obj-$(CONFIG_SND_SOC_AB8500_CODEC)	+= snd-soc-ab8500-codec.o
