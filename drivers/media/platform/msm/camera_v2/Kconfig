@@ -268,3 +268,9 @@ config MSM_SEC_CCI_DEBUG
 	---help---
 	  Enables simulation of secure camera for Secure CCI Realy
 	  debugging.
+
+config MULTI_CAMERA_DEEN
+	bool "Enable MULTI_CAMERA_DEEN"
+	default n
+	---help---
+		Enable support for the MULTI camera
