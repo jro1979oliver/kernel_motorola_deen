@@ -211,8 +211,12 @@ void msm_isp_get_timestamp(struct msm_isp_timestamp *time_stamp,
 		msm_isp_get_avtimer_ts(time_stamp);
 		time_stamp->buf_time.tv_sec    = time_stamp->vt_time.tv_sec;
 		time_stamp->buf_time.tv_usec   = time_stamp->vt_time.tv_usec;
-	} else {
+	} else	{
+#ifdef CONFIG_CAMERA_CLOCK_BOOTTIME
 		get_monotonic_boottime(&ts);
+#else
+		ktime_get_ts(&ts);
+#endif
 		time_stamp->buf_time.tv_sec    = ts.tv_sec;
 		time_stamp->buf_time.tv_usec   = ts.tv_nsec/1000;
 	}
