@@ -186,6 +186,53 @@ chan_to_ht_40_index_map chan_to_ht_40_index[NUM_20MHZ_RF_CHANNELS] =
   {RF_CHAN_BOND_163, INVALID_RF_CHANNEL},  //RF_CHAN_165,
 };
 
+//BEGIN IKSWO-79967, add disable MHS Band1 country list
+typedef struct
+{
+    v_U16_t countryCount;
+    v_COUNTRYCODE_t countryCode[MAX_COUNTRY_COUNT];
+} DisableMhsBand1CountryTable_t;
+static DisableMhsBand1CountryTable_t disableMhsBand1CountryInfoTable =
+{
+    33,
+    {
+      {'A', 'T'},
+      {'B', 'E'},
+      {'B', 'G'},
+      {'C', 'H'},
+      {'C', 'Y'},
+      {'C', 'Z'},
+      {'D', 'E'},
+      {'D', 'K'},
+      {'E', 'E'},
+      {'E', 'L'},
+      {'E', 'S'},
+      {'F', 'I'},
+      {'F', 'R'},
+      {'H', 'R'},
+      {'H', 'U'},
+      {'I', 'E'},
+      {'I', 'S'},
+      {'I', 'T'},
+      {'L', 'I'},
+      {'L', 'T'},
+      {'L', 'U'},
+      {'L', 'V'},
+      {'M', 'T'},
+      {'N', 'L'},
+      {'N', 'O'},
+      {'P', 'L'},
+      {'P', 'T'},
+      {'R', 'O'},
+      {'S', 'E'},
+      {'S', 'I'},
+      {'S', 'K'},
+      {'T', 'R'},
+      {'U', 'K'},
+    }
+};
+//END IKSWO-79967
+
 static CountryInfoTable_t countryInfoTable =
 {
     /* the first entry in the table is always the world domain */
@@ -4566,6 +4613,26 @@ void vos_getCurrentCountryCode( tANI_U8 *cc)
 {
     vos_mem_copy(cc, linux_reg_cc, 2);
 }
+
+//BEGIN IKSWO-79967, add function to check if current country need disable MHS 5G Band1
+/**------------------------------------------------------------------------
+  \brief vos_IsDisableB1Countrycode -
+  \param   countrycode
+  \return TRUE if country need disable MHS Band 1
+  \sa
+  -------------------------------------------------------------------------*/
+
+v_BOOL_t vos_IsDisableMhsBand1CountryCode(tANI_U8 *cc)
+{
+    int i;
+    for (i = 0; i < disableMhsBand1CountryInfoTable.countryCount; i++)
+    {
+        if (memcmp(cc, disableMhsBand1CountryInfoTable.countryCode[i], VOS_COUNTRY_CODE_LEN) == 0)
+            return VOS_TRUE;
+    }
+    return VOS_FALSE;
+}
+//END IKSWO-79967
 
 #else
 
