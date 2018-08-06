@@ -291,7 +291,7 @@
 
 	qusb_phy: qusb@79000 {
 		qcom,qusb-phy-init-seq = <0xF8 0x80
-					0x97 0x84
+					0x9F 0x84
 					0x83 0x88
 					0xC7 0x8C
 					0x14 0x9C
@@ -468,8 +468,35 @@
 &wled {
 	qcom,fs-curr-ua = <25000>;
 	qcom,cons-sync-write-delay-us = <1000>;
-	qcom,led-strings-list = [00 01 02];
+	qcom,led-strings-list = [00 01];
 	qcom,en-cabc;
+};
+
+&spmi_bus {
+	qcom,pmi8950@2 {
+		/delete-node/ qcom,leds@a100;
+
+		qcom,leds@1000 {
+			status = "ok";
+			reg = <0x1000 0x100>;
+			compatible = "qcom,leds-atc";
+			linux,name = "charging";
+			qcom,ctrl-reg = <0x243>;
+		};
+	};
+
+	qcom,pm8953@0 {
+		qcom,power-on@800 {
+			qcom,pon_3 {
+				qcom,pon-type = <3>;
+				qcom,support-reset = <1>;
+				qcom,pull-up = <1>;
+				qcom,s1-timer = <6720>;
+				qcom,s2-timer = <2000>;
+				qcom,s2-type = <8>;
+			};
+		};
+	};
 };
 
 &pmx_mdss {
