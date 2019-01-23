@@ -175,7 +175,6 @@ int check_caller_access_to_name(struct inode *parent_node, const struct qstr *na
 	return 1;
 }
 
-#ifdef CONFIG_SDCARD_FS_DIR_WRITER
 int add_app_name_to_list(appid_t appid, char *list, int len)
 {
 	int i, count = 0, free_len = len;
@@ -202,7 +201,6 @@ int add_app_name_to_list(appid_t appid, char *list, int len)
 	rcu_read_unlock();
 	return count;
 }
-#endif
 
 static struct hashtable_entry *alloc_hashtable_entry(const struct qstr *key,
 		appid_t value)
