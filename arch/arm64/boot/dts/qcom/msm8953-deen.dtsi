@@ -425,8 +425,8 @@
 				"msm-dai-q6-dev.241", "msm-dai-q6-dev.240",
 				"msm-dai-q6-dev.32771", "msm-dai-q6-dev.32772",
 				"msm-dai-q6-dev.32773", "msm-dai-q6-dev.32770";
-		asoc-codec = <&stub_codec>, <&pm8953_diangu_dig>;
-		asoc-codec-names = "msm-stub-codec.1", "cajon_codec";
+		asoc-codec = <&stub_codec>, <&msm_digital_codec>;
+		asoc-codec-names = "msm-stub-codec.1", "msm_digital_codec";
 
 	};
 
@@ -464,7 +464,7 @@
 	};
 };
 
-&pm8953_diangu_dig{
+&msm_digital_codec {
 	qcom,cdc-micbias-cfilt-mv = <2750000>;
 };
 
