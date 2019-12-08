@@ -1939,6 +1939,11 @@ static int tas2560_dai_init(struct snd_soc_pcm_runtime *rtd)
 	ret = tas2560_algo_routing_init(rtd);
 	return ret;
 }
+#else
+static int tas2560_dai_init(struct snd_soc_pcm_runtime *rtd)
+{
+    return 0;
+}
 #endif
 /* Digital audio interface glue - connects codec <---> CPU */
 static struct snd_soc_dai_link msm8952_dai[] = {
