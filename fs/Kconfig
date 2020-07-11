@@ -217,6 +217,7 @@ source "fs/qnx6/Kconfig"
 source "fs/romfs/Kconfig"
 source "fs/pstore/Kconfig"
 source "fs/sysv/Kconfig"
+source "fs/sdcardfs/Kconfig"
 source "fs/ufs/Kconfig"
 source "fs/exofs/Kconfig"
 
