@@ -610,11 +610,12 @@
 	};
 };
 
-&pmi8950_charger {
+&qpnp_smbcharger {
 	/delete-property/ pinctrl-names;
 	/delete-property/ pinctrl-0;
 	/delete-property/ gpios;
 	/delete-property/ gpio-names;
+	/delete-property/ qcom,iterm-disable;
 
 	qcom,max-usbin-current-ma = <3000>;
 	qcom,step-chg-steps = <4200 3000 2000>,
@@ -647,7 +648,7 @@
 	};
 };
 
-&pmi8950_fg {
+&qpnp_fg {
 	/delete-property/ qcom,battery-data;
 	qcom,thermal-coefficients =  /bits/ 16 <0x2d87 0x9151 0x7d3c>;
 	qcom,irq-volt-empty-mv = <3000>;
