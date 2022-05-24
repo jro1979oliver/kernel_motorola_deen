@@ -703,6 +703,15 @@ dtb-$(CONFIG_SANDERS_DTB) += \
 	msm8953-sanders-p3.dtb \
 	msm8953-sanders-p4.dtb
 
+dtb-$(CONFIG_DEEN_DTB) += \
+dtb-$(CONFIG_ARCH_MSM8953) += msm8953-deen-evt1.dtb
+dtb-$(CONFIG_ARCH_MSM8953) += msm8953-deen-evt2.dtb
+dtb-$(CONFIG_ARCH_MSM8953) += msm8953-deen-dvt1a.dtb
+dtb-$(CONFIG_ARCH_MSM8953) += msm8953-deen-dvt1b.dtb
+dtb-$(CONFIG_ARCH_MSM8953) += msm8953-deen-dvt2.dtb
+dtb-$(CONFIG_ARCH_MSM8953) += msm8953-deen-pvt1.dtb
+dtb-$(CONFIG_ARCH_MSM8953) += msm8953-deen-pvt2.dtb
+
 dtb-$(CONFIG_ALI_DTB) += \
 	sdm450-ali.dtb
 
