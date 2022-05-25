@@ -37,12 +37,21 @@
 				fsmgr_flags = "wait,slotselect";
 				status = "ok";
 			};
+                        oem {
+				compatible = "android,oem";
+				dev = "/dev/block/platform/soc/7824900.sdhci/by-name/oem";
+				type = "ext4";
+				mnt_flags = "ro,barrier=1,discard";
+				fsmgr_flags = "wait,slotselect";
+				status = "ok";
+                        };
 			system {
 				status = "disable";
 			};
 		};
 	};
 };
+
 
 &i2c_3 {
 	status = "ok";
@@ -157,7 +166,6 @@
 	et320: et320{
 		compatible = "egistec,et320";
 		status = "ok";
-		reg = <0>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <48 0x0>;
 		egistec,gpio_irq    = <&tlmm 48 0x0>;
@@ -292,7 +300,7 @@
 
 	qusb_phy: qusb@79000 {
 		qcom,qusb-phy-init-seq = <0xF8 0x80
-					0x9F 0x84
+					0x97 0x84
 					0x83 0x88
 					0xC7 0x8C
 					0x14 0x9C
@@ -482,7 +490,7 @@
 			status = "ok";
 			reg = <0x1000 0x100>;
 			compatible = "qcom,leds-atc";
-			linux,name = "charging";
+			linux,name = "white";
 			qcom,ctrl-reg = <0x243>;
 		};
 	};
