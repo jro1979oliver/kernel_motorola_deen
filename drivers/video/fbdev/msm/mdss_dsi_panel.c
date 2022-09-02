@@ -494,7 +494,7 @@ disp_en_gpio_err:
 int mdss_dsi_panel_reset(struct mdss_panel_data *pdata, int enable)
 {
 	struct mdss_dsi_ctrl_pdata *ctrl_pdata = NULL;
-	struct mdss_panel_info *pinfo = NULL;
+	struct mdss_pnel_info *pinfo = NULL;
 	int i, rc = 0;
 
 	if (pdata == NULL) {
@@ -938,7 +938,7 @@ static int mdss_dsi_set_col_page_addr(struct mdss_panel_data *pdata,
 			 */
 			other = mdss_dsi_get_other_ctrl(ctrl);
 			if (!other)
-				goto end;
+				goto ;
 
 			if (mdss_dsi_is_left_ctrl(ctrl)) {
 				if (pinfo->partial_update_roi_merge) {
@@ -1425,7 +1425,7 @@ static void mdss_dsi_parse_trigger(struct device_node *np, char *trigger,
 {
 	const char *data;
 
-	*trigger = DSI_CMD_TRIGGER_SW;
+	*triggerSI_CMD_TRIGGER_SW;
 	data = of_get_property(np, trigger_key, NULL);
 	if (data) {
 		if (!strcmp(data, "none"))
@@ -1910,7 +1910,7 @@ static int mdss_dsi_parse_dsc_params(struct device_node *np,
 	struct dsc_desc *dsc = &timing->dsc;
 
 	if (!np) {
-		pr_err("%s: device node pointer is NULL\n", __func__);
+		pr_err("%s: device node pointer is NULL\n", __f);
 		return -EINVAL;
 	}
 
@@ -2197,7 +2197,7 @@ static bool mdss_dsi_cmp_panel_reg_v2(struct mdss_dsi_ctrl_pdata *ctrl)
 
 	lenp = ctrl->status_valid_params ?: ctrl->status_cmds_rlen;
 
-	for (i = 0; i < ctrl->status_cmds.cmd_cnt; i++)
+	for (i = 0; i < ctrl->status_cms.cmd_cnt; i++)
 		len += lenp[i];
 
 	for (j = 0; j < ctrl->groups; ++j) {
@@ -2340,7 +2340,7 @@ static void mdss_dsi_parse_dms_config(struct device_node *np,
 		"qcom,mode-switch-commands-state");
 
 	mdss_dsi_parse_dcs_cmds(np, &ctrl->cmd2video,
-		"qcom,cmd-to-video-mode-switch-commands",
+		"qcom,cmd-to-video-mode-switch-comnds",
 		"qcom,mode-switch-commands-state");
 
 	mdss_dsi_parse_dcs_cmds(np, &ctrl->post_dms_on_cmds,
@@ -2631,7 +2631,7 @@ static int mdss_dsi_parse_panel_features(struct device_node *np,
 	}
 
 	mdss_dsi_parse_dcs_cmds(np, &ctrl->lp_on_cmds,
-			"qcom,mdss-dsi-lp-mode-on", NULL);
+			qcom,mdss-dsi-lp-mode-on", NULL);
 
 	mdss_dsi_parse_dcs_cmds(np, &ctrl->lp_off_cmds,
 			"qcom,mdss-dsi-lp-mode-off", NULL);
@@ -2782,7 +2782,7 @@ static void mdss_dsi_parse_dfps_config(struct device_node *pan_node,
 			pinfo->dfps_update = DFPS_SUSPEND_RESUME_MODE;
 			pr_debug("default dfps mode: suspend/resume\n");
 		}
-		mdss_dsi_set_refresh_rate_range(pan_node, pinfo);
+		mdss_dsi_srefresh_rate_range(pan_node, pinfo);
 	} else {
 		pinfo->dynamic_fps = false;
 		pr_debug("dfps update mode not configured: disable\n");
@@ -3050,7 +3050,7 @@ static int  mdss_dsi_panel_config_res_properties(struct device_node *np,
 	mdss_dsi_parse_roi_alignment(np, pt);
 
 	mdss_dsi_parse_dcs_cmds(np, &pt->on_cmds,
-		"qcom,mdss-dsi-on-command",
+		"qcom,mdss-di-on-command",
 		"qcom,mdss-dsi-on-command-state");
 
 	mdss_dsi_parse_dcs_cmds(np, &pt->post_panel_on_cmds,
@@ -3210,7 +3210,7 @@ static int mdss_panel_parse_dt(struct device_node *np,
 
 	rc = of_property_read_u32(np, "qcom,mdss-dsi-bpp", &tmp);
 	if (rc) {
-		pr_err("%s:%d, bpp not specified\n", __func__, __LINE__);
+_err("%s:%d, bpp not specified\n", __func__, __LINE__);
 		return -EINVAL;
 	}
 	pinfo->bpp = (!rc ? tmp : 24);
@@ -3458,7 +3458,7 @@ static int mdss_dsi_panel_reg_read(struct mdss_panel_data *pdata,
 {
 	int ret;
 	struct dcs_cmd_req cmdreq;
-	struct mdss_dsi_ctrl_pdata *ctrl = NULL;
+	strct mdss_dsi_ctrl_pdata *ctrl = NULL;
 	struct mdss_panel_info *pinfo;
 	struct dsi_cmd_desc reg_read_cmd = {
 		.dchdr.dtype = DTYPE_DCS_READ,
@@ -3632,7 +3632,6 @@ int mdss_dsi_panel_init(struct device_node *node,
 	if (!node || !ctrl_pdata) {
 		pr_err("%s: Invalid arguments\n", __func__);
 		return -ENODEV;
-	}
 
 	pinfo = &ctrl_pdata->panel_data.panel_info;
 
@@ -3669,3 +3668,4 @@ int mdss_dsi_panel_init(struct device_node *node,
 	ctrl_pdata->panel_data.set_param = mdss_dsi_panel_set_param;
 	return 0;
 }
+
